@@ -13,7 +13,7 @@ const db_url = "mongodb://localhost:27017/Tinder";
 
 //middleware
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 
 //DB Config
 mongoose.connect(db_url, {
@@ -44,9 +44,10 @@ app.get('/cards', (req, res) => {
     Cards.find((err, data) => {
         if(err) {
             res.status(500).send(err);
-            //console.log(err);
+            console.log(err);
         } else {
             res.status(200).send(data);
+
         }
     });
 });
