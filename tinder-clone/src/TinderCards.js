@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import "./tindercards.css";
 import TinderCard from 'react-tinder-card'
 import axios from './axios'
 
 function TinderCards() {
-  const [people, setPeople] = useState([]);
+  const [people, setPeople] = useState([
+    {
+      name: 'Elon Musk',
+      imgUrl: "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTc5OTk2ODUyMTMxNzM0ODcy/gettyimages-1229892983-square.jpg"
+    },
+    {
+      name: 'Jeff Bezoz',
+      imgUrl: "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTY2NzA3ODE3OTgwMzcyMjYw/jeff-bezos-andrew-harrer_bloomberg-via-getty-images.jpg"
+    },
+  ]);
 
   useEffect(() => {
     //console.log('req :');
     async function fetchData() {
-      const req = await axios.get('/cards').then(console.log('success')).catch(console.log('error'))
+      const req = await axios.get('/cards');
       console.log('req :');
       console.log(req.data);
 
@@ -18,6 +27,7 @@ function TinderCards() {
 
     fetchData();
   }, []);
+  
 
   console.log('Pep:');
   console.log(people);
